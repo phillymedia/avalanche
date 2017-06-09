@@ -1,0 +1,101 @@
+$tablet: "only screen and (max-width : 800px)";
+$mobile: "only screen and (max-width : 480px)";
+$philly-sans: "Gotham Narrow SSm A", "Gotham Narrow SSm B","Gotham Narrow", "Arial", sans-serif;
+$philly-serif: "Sentinel SSm A","Sentinel SSm B","Sentinel", "Times New Roman",serif;
+
+$philly-red: #c00;
+$philly-red2: #B63321;
+$philly-blue: #0061A2;
+$philly-darkblue: #0A3F59;
+$philly-green: #0C928F;
+$philly-orange: #F4A027;
+$philly-darkgray: #222;
+$philly-mediumgray: #666;
+$philly-lightgray: #d9d9d9;
+
+%noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+
+@mixin desktop {
+  @media only screen and (max-width: 1000px) {
+    @content;
+  }
+}
+@mixin tablet {
+  @media only screen and (max-width: 800px) {
+    @content;
+  }
+}
+@mixin mobile {
+  @media only screen and (max-width: 480px) {
+    @content;
+  }
+}
+@mixin BS-large {
+  @media only screen and (min-width: 1200px) {
+    @content;
+  }
+}
+@mixin BS-medium {
+  @media only screen and (min-width: 992px) {
+    @content;
+  }
+}
+@mixin BS-small {
+  @media only screen and (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin transition($args...) {
+    -webkit-transition: $args;
+    -moz-transition: $args;
+    -ms-transition: $args;
+    -o-transition: $args;
+    transition: $args;
+}
+@mixin box-shadow($args...) {
+    -webkit-box-shadow: $args;
+    -moz-box-shadow: $args;
+    box-shadow: $args;
+}
+@mixin display-flex {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+}
+@mixin flex($flex...) {
+    -webkit-box-flex: $flex;
+    /* OLD - iOS 6-, Safari 3.1-6 */
+    -moz-box-flex: $flex;
+    /* OLD - Firefox 19- */
+    /* For old syntax, otherwise collapses. */
+    -webkit-flex: $flex;
+    /* Chrome */
+    -ms-flex: $flex;
+    /* IE 10 */
+    flex: $flex;
+}
+
+%clearfix {
+    *zoom: 1;
+
+    &:after,
+    &:before {
+        content: " ";
+        display: table;
+    }
+
+    &:after {
+        clear: both;
+    }
+}
