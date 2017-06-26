@@ -1,2 +1,415 @@
 @import 'longform-styles';
 @import 'philly-styles/values';
+$lightblue: #dbe3e8;
+$darkblueshadow: #6d777e;
+$bluehighlight: #9cc0d6;
+
+.bg-color {
+    background-color: $lightblue;
+    @include transition(all .5s ease);
+}
+
+.fadeOut {
+    position: relative;
+    overflow: hidden;
+
+    .bg-color {
+        background-color: rgba($darkblueshadow,0.65);
+        @include transition(all .5s ease);
+    }
+
+    &:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 100%;
+        width: 100%;
+        background-color: rgba($darkblueshadow,0.65);
+        z-index: 10;
+    }
+}
+
+.firstp {
+    font-size: 1.8em;
+    // line-height: 1.3em;
+    margin: 100px 0 50px 0;
+    display: block;
+    position: relative;
+    z-index: 1;
+}
+// .dropBox {
+//     float: left;
+//     background: white;
+//     width: 50px;
+//     height: 50px;
+//     position: relative;
+// }
+//
+// .dropCapFirst {
+//     float: left;
+//     color: #222;
+//     font-size: 2.5em;
+//     padding-top: 0;
+//     padding-right: 20px;
+//     font-weight: 900;
+//     padding-left: 3px;
+//     font-family: $philly-serif;
+//     background-color: white;
+//     position: relative;
+//     height: 100px;
+//     width: 100px;
+// }
+
+.dropBox {
+    position: relative;
+    font-size: 32px;
+    color: #222;
+    letter-spacing: 0.95px;
+    width: 110px;
+    height: 100px;
+    background: 0 0;
+    text-align: center;
+    float: left;
+    padding: 0 10px 0 0;
+    margin-top: 107px;
+    margin-right: 10px;
+}
+
+.dropCapFirst {
+    display: block;
+    width: 100%;
+    height: 100%;
+    line-height: 100px;
+    font-size: 2.5em;
+    color: #222;
+    background: white;
+    font-family: $philly-serif;
+    font-weight: 900;
+    // background-color: white;
+    // position: relative;
+    // height: 100px;
+    // width: 100px;
+}
+
+.sidebar {
+    display: inline-block;
+    float: right;
+    padding: 10px;
+    margin: 0 0 30px 30px;
+    max-width: 50%;
+    @include tablet {
+        max-width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+    @include BS-medium {
+        margin-right: -425px;
+        max-width: 400px;
+    }
+    @include BS-large {
+        max-width: 480px;
+        margin-right: -520px;
+    }
+    @include BS-xl {
+        max-width: 580px;
+        margin-right: -700px;
+    };
+}
+
+.sidebar-text {
+    font-family: $philly-sans;
+    border: 3px solid $bluehighlight;
+    // @include transform(rotate(.5deg));
+    background-color: rgba(white, 0.7);
+    padding: 20px;
+    @include box-shadow(5px 5px 15px 0 rgba($darkblueshadow,0.3));
+
+    h4 {
+        font-size: 22px;
+        // @include transform(rotate(-.5deg));
+
+
+    }
+    p {
+        font-family: $philly-sans;
+        font-size: 15px;
+        line-height: 1.4em;
+        // @include transform(rotate(-.5deg));
+
+    }
+}
+
+.photobox {
+    .imageHolder {
+        @include transform(rotate(1deg));
+        background: white;
+        @include box-shadow(5px 5px 15px 0 rgba($darkblueshadow,0.5));
+        border: 5px solid white;
+    }
+
+    .tilt {
+        @include transform(rotate(-1.5deg));
+        border: 5px solid white;
+        @include box-shadow(5px 5px 15px 0 rgba($darkblueshadow,0.5));
+    }
+
+    .doubletilt {
+        width: 85%;
+        border: 5px solid white;
+
+        &:first-child {
+            @include transform(rotate(-1.5deg));
+        }
+
+        &:nth-child(2) {
+            @include transform(rotate(1.5deg));
+            margin-top: -20px;
+            @include box-shadow(5px -5px 15px 0 rgba($darkblueshadow,0.5));
+            margin-left: auto;
+        }
+        @include box-shadow(5px 5px 15px 0 rgba($darkblueshadow,0.5));
+    }
+
+    .vertical {
+        max-width: 300px;
+    }
+
+    .containerPhotoCaption {
+        padding: 0;
+    }
+
+    .containerPhotoCredit {
+        padding: 0;
+    }
+}
+
+.smaller {
+    max-width: 400px;
+
+    .vertical {
+        max-width: 200px;
+    }
+    @include BS-large {
+        margin-right: -550px;
+    };
+}
+
+.bodyContainer {
+    position: relative;
+}
+
+.bigmap {
+    position: absolute;
+    top: -50px;
+    right: 0;
+    max-width: 40%;
+    height: 100vh;
+    width: 100%;
+    background: #eee;
+    z-index: 10;
+    border-top: 2px solid white;
+    background-image: url('./still.jpg');
+    background-position: center 10%;
+    background-size: cover;
+}
+
+.mapbreak {
+    position: relative;
+    margin-bottom: -50px;
+}
+
+.mapsection {
+    height: 500px;
+    width: 100%;
+    background: #eee;
+    margin-top: 0;
+    @include BS-medium {
+        position: -webkit-sticky;
+        position: sticky;
+        top: -1px;
+    };
+}
+
+.sectionBreak {
+    // border-top: 1px solid white;
+    height: 2px;
+    margin-bottom: 50px;
+    background-color: white;
+    position: relative;
+
+    &::after {
+        content: '';
+        position: absolute;
+        height: 60vh;
+        width: 100%;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 0;
+        background: -moz-radial-gradient(left, ellipse cover, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 70%);
+        background: -webkit-radial-gradient(left, ellipse cover, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 70%);
+        background: radial-gradient(farthest-corner at 0px 0px , white 0%, rgba(white,0) 70%);
+    }
+}
+
+.highlight {
+    background-color: white;
+    @include box-shadow(1px 0 0 white, -1px 0 0 white);
+    padding: 1px 3px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    @extend %smoothing;
+
+    &:hover {
+        background-color: $bluehighlight;
+        @include box-shadow(1px 0 0 $bluehighlight, -1px 0 0 $bluehighlight);
+        color: black;
+    }
+    // &:after {
+    //     content: '\f2c0';
+    //     font-family: fontAwesome;
+    //     font-size: 11px;
+    //     vertical-align: middle;
+    //     color: $darkblueshadow;
+    //     padding-left: 3px;
+    //     padding-right: 2px;
+    // }
+}
+
+p {
+    z-index: 10;
+}
+
+.glossary {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 900;
+    @include display-flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    display: none;
+
+    .innertext {
+        position: relative;
+        padding: 50px;
+        background-color: rgba(white,0.9);
+        margin: 60px 50px 0;
+        max-width: 900px;
+        @include box-shadow(4px 4px 15px 0 $darkblueshadow);
+        font-family: $philly-sans;
+        overflow: hidden;
+        @include transition(all 0.5s linear);
+        height: auto;
+    }
+
+    .seeMore {
+        position: absolute;
+        right: 10px;
+        bottom: 6px;
+        color: $darkblueshadow;
+        font-size: 15px;
+        text-transform: uppercase;
+        cursor: pointer;
+    }
+
+    .namesection {
+        padding-bottom: 15px;
+        @include display-flex;
+        align-items: center;
+
+        .bioImage {
+            @include flex(1 1 25%);
+            padding-right: 20px;
+        }
+        .flexwrap {
+            @include flex(1 1 75%);
+        }
+
+
+    }
+
+    .name {
+        font-weight: 900;
+        font-size: 18px;
+    }
+
+    .scrollsection {
+        max-height: 70vh;
+        overflow: scroll;
+        @include transition(all 0.5s linear);
+
+        .bioImage {
+            @include flex(1 1 10%);
+            padding-right: 20px;
+            .containerPhotoCredit {
+                display: none;
+            }
+        }
+
+
+    }
+
+    .displaysection {
+        max-height: 70vh;
+        overflow: scroll;
+        opacity: 1;
+    }
+
+    .hidescreen {
+        @include transition(all 0.5s linear);
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+    }
+
+    .slideOut {
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+    }
+
+    .closebutton {
+        position: absolute;
+        top: 2px;
+        right: 10px;
+        font-weight: bold;
+        cursor: pointer;
+        font-size: 20px;
+    }
+}
+
+.inView {
+    @include display-flex;
+}
+
+.fixedline {
+    position: fixed;
+    height: 100%;
+    border-left: 5px solid red;
+    left: 100px;
+    top: 0;
+    bottom: 0;
+}
+
+.testing {
+    width: 400px;
+    height: 500px;
+    padding: 20px;
+    background-color: black;
+    display: inline-block;
+    float: right;
+    position: absolute;
+    left: 500px;
+}

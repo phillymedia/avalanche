@@ -7,8 +7,8 @@
 }
 
 #backgroundImage-1 {
-    background-image: url("http://media.philly.com/images/102515-Philadelphia-skyline.jpg");
-    background-position: left 50% top 79px;
+    background-image: url("../css/RS700121_SWBowl.jpg");
+    background-position: left 50% top 20%;
     @include tablet {
         background-position: left 50% top 49px;
         background-size: contain;
@@ -324,12 +324,12 @@ p {
     margin-bottom: 1.25em !important;
     font-size: 18px;
     line-height: 1.9em;
-    -webkit-font-smoothing: antialiased;
-    -moz-font-smoothing: antialiased;
-    font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
-    -webkit-text-size-adjust: none;
-    -moz-osx-font-smoothing: grayscale;
+    // -webkit-font-smoothing: antialiased;
+    // -moz-font-smoothing: antialiased;
+    // font-smoothing: antialiased;
+    // text-rendering: optimizeLegibility;
+    // -webkit-text-size-adjust: none;
+    // -moz-osx-font-smoothing: grayscale;
 }
 
 .progress {

@@ -1,8 +1,5 @@
-$tablet: "only screen and (max-width : 800px)";
-$mobile: "only screen and (max-width : 480px)";
 $philly-sans: "Gotham Narrow SSm A", "Gotham Narrow SSm B","Gotham Narrow", "Arial", sans-serif;
 $philly-serif: "Sentinel SSm A","Sentinel SSm B","Sentinel", "Times New Roman",serif;
-
 $philly-red: #c00;
 $philly-red2: #B63321;
 $philly-blue: #0061A2;
@@ -13,47 +10,70 @@ $philly-darkgray: #222;
 $philly-mediumgray: #666;
 $philly-lightgray: #d9d9d9;
 
+%smoothing {
+    -webkit-font-smoothing: antialiased;
+    -moz-font-smoothing: antialiased;
+    font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    -webkit-text-size-adjust: none;
+    -moz-osx-font-smoothing: grayscale;
+}
+
 %noselect {
-  -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Safari */
-     -khtml-user-select: none; /* Konqueror HTML */
-       -moz-user-select: none; /* Firefox */
-        -ms-user-select: none; /* Internet Explorer/Edge */
-            user-select: none; /* Non-prefixed version, currently
+    -webkit-touch-callout: none;
+    /* iOS Safari */
+    -webkit-user-select: none;
+    /* Safari */
+    -khtml-user-select: none;
+    /* Konqueror HTML */
+    -moz-user-select: none;
+    /* Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
+    user-select: none;
+    /* Non-prefixed version, currently
                                   supported by Chrome and Opera */
 }
-
 @mixin desktop {
-  @media only screen and (max-width: 1000px) {
-    @content;
-  }
+     @media only screen and (max-width: 1000px){
+        @content;
+    }
 }
 @mixin tablet {
-  @media only screen and (max-width: 800px) {
-    @content;
-  }
+     @media only screen and (max-width: 800px){
+        @content;
+    }
+}
+@mixin slider {
+     @media only screen and (max-width: 700px){
+        @content;
+    }
 }
 @mixin mobile {
-  @media only screen and (max-width: 480px) {
-    @content;
-  }
+     @media only screen and (max-width: 480px){
+        @content;
+    }
+}
+@mixin BS-xl {
+     @media only screen and (min-width: 1450px){
+        @content;
+    }
 }
 @mixin BS-large {
-  @media only screen and (min-width: 1200px) {
-    @content;
-  }
+     @media only screen and (min-width: 1200px){
+        @content;
+    }
 }
 @mixin BS-medium {
-  @media only screen and (min-width: 992px) {
-    @content;
-  }
+     @media only screen and (min-width: 992px){
+        @content;
+    }
 }
 @mixin BS-small {
-  @media only screen and (min-width: 768px) {
-    @content;
-  }
+     @media only screen and (min-width: 768px){
+        @content;
+    }
 }
-
 @mixin transition($args...) {
     -webkit-transition: $args;
     -moz-transition: $args;
@@ -67,28 +87,77 @@ $philly-lightgray: #d9d9d9;
     box-shadow: $args;
 }
 @mixin display-flex {
-    display: -webkit-box;
-    display: -moz-box;
     display: -ms-flexbox;
     display: -webkit-flex;
     display: flex;
 }
+@mixin flex-wrap($flex...) {
+    -webkit-flex-wrap: $flex;
+    -ms-flex-wrap: $flex;
+    flex-wrap: $flex;
+}
+@mixin justify-content($flex...) {
+    -webkit-justify-content: $flex;
+    -ms-flex-pack: $flex;
+    justify-content: $flex;
+}
+@mixin align-content($flex...) {
+    -webkit-align-content: $flex;
+    -ms-flex-line-pack: $flex;
+    align-content: $flex;
+}
+@mixin order($flex...) {
+    -webkit-order: $flex;
+    -ms-flex-order: $flex;
+    order: $flex;
+}
 @mixin flex($flex...) {
-    -webkit-box-flex: $flex;
-    /* OLD - iOS 6-, Safari 3.1-6 */
-    -moz-box-flex: $flex;
-    /* OLD - Firefox 19- */
-    /* For old syntax, otherwise collapses. */
     -webkit-flex: $flex;
-    /* Chrome */
     -ms-flex: $flex;
-    /* IE 10 */
     flex: $flex;
+}
+@mixin align-self($flex...) {
+    -webkit-align-self: $flex;
+    -ms-flex-item-align: $flex;
+    align-self: $flex;
+}
+
+@mixin animation($args...) {
+  -webkit-animation: $args;
+  -moz-animation: $args;
+  -o-animation: $args;
+  animation: $args;
+}
+@mixin transition($transition...) {
+    -moz-transition:    $transition;
+    -o-transition:      $transition;
+    -webkit-transition: $transition;
+    transition:         $transition;
+}
+@mixin transform($transforms) {
+	   -moz-transform: $transforms;
+	     -o-transform: $transforms;
+	    -ms-transform: $transforms;
+	-webkit-transform: $transforms;
+          transform: $transforms;
+}
+
+@mixin keyframes($animationName) {
+    @-webkit-keyframes #{$animationName} {
+        @content;
+    }
+    @-moz-keyframes #{$animationName} {
+        @content;
+    }
+    @-o-keyframes #{$animationName} {
+        @content;
+    }
+    @keyframes #{$animationName} {
+        @content;
+    }
 }
 
 %clearfix {
-    *zoom: 1;
-
     &:after,
     &:before {
         content: " ";
