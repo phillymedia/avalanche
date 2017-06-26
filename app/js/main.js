@@ -44,17 +44,17 @@ $(document).ready(function() {
 });
 
 
-$(window).on('resize', function() {
-    var rowwidth = $(".col").outerWidth();
-    var outercolwidth = $(".container").outerWidth();
-    var windowwidth = $(window).width();
-    // console.log(rowwidth, outercolwidth, windowwidth);
-    // console.log($('.col-md-6').offset().left + $(".col-md-6").width(), $('.col-md-6').offset().left, $(".col-md-6").width());
-    var colleft = $('.col-md-6').offset().left + $(".col-md-6").outerWidth();
-    console.log(colleft, $(window).width(), $(window).width() - colleft);
-    $(".fixedline")
-        .css('left', colleft + "px");
-    //     .css('width', $(window).width() - colleft + "px")
-    //     .css('background-color', 'gray');
-    $(".testing").css("left",colleft-$('.col-md-6').offset().left + "px")
-})
+// $(window).on('resize', function() {
+//     var rowwidth = $(".col").outerWidth();
+//     var outercolwidth = $(".container").outerWidth();
+//     var windowwidth = $(window).width();
+//     // console.log(rowwidth, outercolwidth, windowwidth);
+//     // console.log($('.col-md-6').offset().left + $(".col-md-6").width(), $('.col-md-6').offset().left, $(".col-md-6").width());
+//     var colleft = $('.col-md-6').offset().left + $(".col-md-6").outerWidth();
+//     console.log(colleft, $(window).width(), $(window).width() - colleft);
+//     $(".fixedline")
+//         .css('left', colleft + "px");
+//     //     .css('width', $(window).width() - colleft + "px")
+//     //     .css('background-color', 'gray');
+//     $(".testing").css("left",colleft-$('.col-md-6').offset().left + "px")
+// })
