@@ -1,0 +1,37 @@
+@import "philly-styles/values";
+
+
+.flexgrid {
+    @include display-flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    align-content: flex-start;
+    justify-content: flex-start;
+    font-family: $philly-sans;
+
+    .griditem {
+        @include display-flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        align-content: flex-start;
+        background: rgba(white,0.5);
+        color: #444;
+        padding: 15px;
+        margin: 0 8px 8px 0;
+        @include flex(1 1 100%);
+        // border-radius: 5px;
+
+
+        .name {
+            font-weight: 900;
+            @include flex(1 1 100%);
+            padding-bottom: 6px;
+        }
+    }
+
+    .sv {
+        background: white;
+        color: black;
+    }
+
+}
