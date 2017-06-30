@@ -272,12 +272,7 @@
     margin: 0 3%;
 }
 
-h1.sf-header__heading.dib.va--middle {
-    max-width: 1200px;
-    margin: 20px auto 30px;
-    display: block;
-    font-weight: 100;
-}
+
 
 #recircBox {
     overflow: hidden;
@@ -286,6 +281,25 @@ h1.sf-header__heading.dib.va--middle {
     color: #ffffff;
     padding: 11px;
     border-top: 7px solid #B63321;
+    h1.sf-header__heading.dib.va--middle {
+        max-width: 1200px;
+        margin: 20px auto 30px;
+        display: block;
+        font-weight: 100;
+    }
+    .black,
+    .black a {
+        color: #ffffff;
+        font-weight: 600;
+    }
+
+    .block__list-item-flex.with-dividers {
+        border-right: 1px solid #545454;
+    }
+    .kicker {
+        color: #E86A58;
+        display: none;
+    }
 }
 
 #recircSpecials {
@@ -293,20 +307,9 @@ h1.sf-header__heading.dib.va--middle {
     margin: auto;
 }
 
-.black,
-.black a {
-    color: #ffffff;
-    font-weight: 600;
-}
 
-.block__list-item-flex.with-dividers {
-    border-right: 1px solid #545454;
-}
 
-.kicker {
-    color: #E86A58;
-    display: none;
-}
+
 // -----------BOOTSTRAP FIX--------------------
 
 body,
