@@ -1,13 +1,13 @@
 @import 'longform-styles';
 @import 'philly-styles/values';
 @import 'flexgrid';
-
-$lightblue: #dbe3e8;
-$darkblueshadow: #6d777e;
-$bluehighlight: #9cc0d6;
+$lightblue: #DBE2EF;
+$darkblueshadow: #112D4E;
+$bluehighlight: #DBE2EF;
+$bluetext: #3F72AF;
 
 .bg-color {
-    background-color: $lightblue;
+    // background-color: $lightblue;
     @include transition(all .5s ease);
 }
 
@@ -37,12 +37,23 @@ $bluehighlight: #9cc0d6;
 .firstp {
     font-size: 1.75em;
     line-height: 1.25em;
-    margin: 60px 0 50px 0;
+    margin: 60px 0 50px;
     display: block;
     position: relative;
     z-index: 1;
-    font-style: italic;
+}
 
+.secondp {
+    // line-height: 1.25em;
+    margin: 60px 0 30px;
+    display: block;
+    position: relative;
+    z-index: 1;
+
+    strong {
+        // color: $bluetext;
+        // font-size: 105%;
+    }
 }
 // .dropBox {
 //     float: left;
@@ -92,10 +103,39 @@ $bluehighlight: #9cc0d6;
     background: white;
     font-family: $philly-serif;
     font-weight: 900;
-    // background-color: white;
+    color: #fff;
+    background-color: $bluetext;
     // position: relative;
     // height: 100px;
     // width: 100px;
+}
+
+.dropBox2 {
+    position: relative;
+    font-size: 28px;
+    color: #222;
+    letter-spacing: 0.95px;
+    width: 80px;
+    height: 80px;
+    text-align: center;
+    float: left;
+    margin-top: 58px;
+    margin-right: 10px;
+    margin-left: -40px;
+    // border: 1px solid white;
+}
+
+.dropCapSecond {
+    display: block;
+    width: 100%;
+    height: 100%;
+    line-height: 80px;
+    font-size: 2.5em;
+    color: #222;
+    font-family: $philly-serif;
+    font-weight: 900;
+    color: $bluetext;
+    text-shadow: -3px -3px 0 #fff, 3px -3px 0 #fff, -3px 3px 0 #fff, 3px 3px 0 #fff;
 }
 
 .sidebar {
@@ -128,10 +168,10 @@ $bluehighlight: #9cc0d6;
     // border: 3px solid $bluehighlight;
     // @include transform(rotate(.5deg));
     background-color: rgba(white, 0.6);
-    padding: 30px 30px 20px 30px;
+    padding: 30px 30px 20px;
     margin: 15px;
-    @include box-shadow(2px 2px 15px 0 rgba($darkblueshadow,0.4));
-
+    border: 1px solid $bluehighlight;
+    // @include box-shadow(2px 2px 15px 0 rgba($darkblueshadow,0.4));
     @include BS-large {
         margin: 0 50px;
         max-width: 500px;
@@ -142,28 +182,27 @@ $bluehighlight: #9cc0d6;
         font-size: 14px;
         line-height: 1.6em;
         // @include transform(rotate(-.5deg));
-
     }
 }
 
-
-    h4 {
-        font-size: 17px;
-        padding-bottom: 6px;
-    }
+h4 {
+    font-size: 17px;
+    padding-bottom: 6px;
+    color: $bluetext;
+}
 
 .photobox {
     .imageHolder {
         @include transform(rotate(1deg));
         background: white;
-        @include box-shadow(5px 5px 15px 0 rgba($darkblueshadow,0.5));
-        border: 5px solid white;
+        @include box-shadow(3px 4px 15px 0 rgba($darkblueshadow,0.5));
+        border: 5px solid #fff;
     }
 
     .tilt {
         @include transform(rotate(-1.5deg));
         border: 5px solid white;
-        @include box-shadow(5px 5px 15px 0 rgba($darkblueshadow,0.5));
+        @include box-shadow(3px 4px 15px 0 rgba($darkblueshadow,0.5));
     }
 
     .doubletilt {
@@ -176,11 +215,14 @@ $bluehighlight: #9cc0d6;
 
         &:nth-child(2) {
             @include transform(rotate(1.5deg));
-            margin-top: -20px;
             @include box-shadow(5px -5px 15px 0 rgba($darkblueshadow,0.5));
             margin-left: auto;
         }
-        @include box-shadow(5px 5px 15px 0 rgba($darkblueshadow,0.5));
+        @include box-shadow(3px 4px 15px 0 rgba($darkblueshadow,0.5));
+    }
+
+    .moveup {
+        margin-top: -160px;
     }
 
     .vertical {
@@ -198,15 +240,14 @@ $bluehighlight: #9cc0d6;
 
 .smaller {
     @include BS-medium {
-        max-width: 400px;
-
+        max-width: 460px;
     };
+}
 
-    .vertical {
-        @include BS-medium {
-            max-width: 200px;
-        };
-    }
+.vertical {
+    @include BS-medium {
+        max-width: 250px;
+    };
 }
 
 .bodyContainer {
@@ -245,48 +286,59 @@ $bluehighlight: #9cc0d6;
     };
 }
 
+#firstimg {
+    transform: rotate3d(0, -1, 0, 180deg);
+}
+
 .sectionBreak {
     // border-top: 1px solid white;
     height: 1px;
     // margin-bottom: 30px;
     // background-color: rgba(white,0.3);
     position: relative;
+    text-align: left;
 
-    &::before {
-        content: '';
-        position: absolute;
-        height: 50px;
-        width: 100%;
-        top: -50px;
-        left: 0;
-        right: 0;
-        z-index: 0;
-        // background: -moz-radial-gradient(left, ellipse cover, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 70%);
-        // background: -webkit-radial-gradient(left, ellipse cover, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 70%);
-        // background: linear-gradient(to top )
-        background: radial-gradient(farthest-corner at 18% 100%, white 0%, rgba(white,0) 70%);
-
-    }
-
+    img {
+        position: relative;
+        width: 550px;
+        height: auto;
+        margin-top: -20px;
+        margin-right: auto;
+    };
+    // &::before {
+    //     content: '';
+    //     position: absolute;
+    //     height: 100px;
+    //     width: 100%;
+    //     top: -100px;
+    //     left: 0;
+    //     right: 0;
+    //     z-index: 0;
+    //     // background: -moz-radial-gradient(left, ellipse cover, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 70%);
+    //     // background: -webkit-radial-gradient(left, ellipse cover, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 70%);
+    //     // background: linear-gradient(to top )
+    //     background: radial-gradient(farthest-corner at 18% 100%, rgba(#ffffff,1) 0%, rgba(#ffffff,0) 70%);
+    //
+    // }
     &::after {
         content: '';
         position: absolute;
         height: 60vh;
         width: 100%;
-        top: 0;
+        top: -60px;
         bottom: 0;
         left: 0;
         right: 0;
         z-index: 0;
-        background: -moz-radial-gradient(left, ellipse cover, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 70%);
-        background: -webkit-radial-gradient(left, ellipse cover, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 70%);
-        background: radial-gradient(farthest-corner at 18% 0%, white 0%, rgba(white,0) 70%);
+        // background: -moz-radial-gradient(left, ellipse cover, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 70%);
+        // background: -webkit-radial-gradient(left, ellipse cover, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 70%);
+        background: radial-gradient(farthest-corner at 30% 32%, rgba(#fff,0.8) 0%, rgba(#fff,0) 70%);
     }
 }
 
 .highlight {
-    background-color: white;
-    @include box-shadow(1.5px 0 0 white, -1.5px 0 0 white);
+    background-color: $bluehighlight;
+    @include box-shadow(1.5px 0 0 $bluehighlight, -1.5px 0 0 $bluehighlight);
     padding: 1px 3px;
     border-radius: 4px;
     cursor: pointer;
@@ -315,12 +367,12 @@ p {
 
 .glossary {
     position: fixed;
-    top: 0;
+    // top: 0;
     left: 0;
     right: 0;
     bottom: 0;
     width: 100vw;
-    height: 100vh;
+    height: auto;
     z-index: 900;
     @include display-flex;
     flex-wrap: wrap;
@@ -331,20 +383,20 @@ p {
 
     .innertext {
         position: relative;
-        padding: 50px;
-        background-color: rgba(white,0.9);
-        margin: 60px 50px 0;
-        max-width: 900px;
-        @include box-shadow(4px 4px 15px 0 $darkblueshadow);
+        padding: 20px 30px 10px 30px;
+        background-color: rgba(#eee,0.97);
+        margin: 0;
+        @include box-shadow(0px 0px 10px 0 rgba($darkblueshadow,0.4));
         font-family: $philly-sans;
         overflow: hidden;
         @include transition(all 0.5s linear);
         height: auto;
+        width: 100%;
     }
 
     .seeMore {
         position: absolute;
-        right: 10px;
+        right: 25px;
         bottom: 6px;
         color: $darkblueshadow;
         font-size: 15px;
@@ -355,17 +407,22 @@ p {
     .namesection {
         padding-bottom: 15px;
         @include display-flex;
+        @include flex(1 1 18%);
+        padding-right: 20px;
         align-items: center;
+        max-width: 900px;
+        margin: 0 auto;
+        flex-wrap: wrap;
 
         .bioImage {
-            @include flex(1 1 30%);
+            @include flex(1 1 100%);
             padding-right: 20px;
+            max-width: 120px;
         }
+
         .flexwrap {
             @include flex(1 1 65%);
         }
-
-
     }
 
     .name {
@@ -374,25 +431,34 @@ p {
     }
 
     .scrollsection {
-        max-height: 70vh;
-        overflow: scroll;
+        @include display-flex;
+        flex-wrap: wrap;
+        max-height: 50vh;
+        overflow: auto;
         @include transition(all 0.5s linear);
 
         .bioImage {
-            @include flex(1 1 10%);
+            @include flex(1 1 80px);
             padding-right: 20px;
+            display: none;
+
             .containerPhotoCredit {
                 display: none;
             }
         }
-
-
+        .info {
+            font-size: 14px;
+        }
+        .name {
+            font-size: 16px;
+        }
     }
 
     .displaysection {
-        max-height: 70vh;
-        overflow: scroll;
+        max-height: 30vh;
+        overflow: auto;
         opacity: 1;
+        width: 100%;
     }
 
     .hidescreen {
@@ -411,7 +477,7 @@ p {
     .closebutton {
         position: absolute;
         top: 2px;
-        right: 10px;
+        right: 25px;
         font-weight: bold;
         cursor: pointer;
         font-size: 20px;
@@ -426,7 +492,7 @@ p {
     position: relative;
     height: auto;
     display: inline-block;
-    float:right;
+    float: right;
     margin-left: 20px;
     // max-width: 60%;
     @include tablet {
@@ -436,8 +502,6 @@ p {
         margin-left: 5px;
         max-width: 50%;
     };
-
-
     @include BS-medium {
         position: absolute;
         height: auto;
@@ -453,14 +517,13 @@ p {
     width: auto;
     height: auto;
     margin: 0 0 0 15px;
-
     @include BS-medium {
         padding: 0 20px;
         margin: 0 auto;
-
     };
     @include BS-large {
         // padding: 0 65px;
         max-width: 650px;
+        padding-right: 60px;
     };
 }
