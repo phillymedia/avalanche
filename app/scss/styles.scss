@@ -1,13 +1,13 @@
 @import 'longform-styles';
 @import 'philly-styles/values';
 @import 'flexgrid';
-$lightblue: #DBE2EF;
+$lightblue: #e3eff5;
 $darkblueshadow: #112D4E;
-$bluehighlight: #DBE2EF;
-$bluetext: #3F72AF;
+$bluehighlight: #e9f7fe;
+$bluetext: #6f7e8f;
 
 .bg-color {
-    // background-color: $lightblue;
+    background-color: $lightblue;
     @include transition(all .5s ease);
 }
 
@@ -104,7 +104,7 @@ $bluetext: #3F72AF;
     font-family: $philly-serif;
     font-weight: 900;
     color: #fff;
-    background-color: $bluetext;
+    color: $bluetext;
     // position: relative;
     // height: 100px;
     // width: 100px;
@@ -135,7 +135,7 @@ $bluetext: #3F72AF;
     font-family: $philly-serif;
     font-weight: 900;
     color: $bluetext;
-    text-shadow: -3px -3px 0 #fff, 3px -3px 0 #fff, -3px 3px 0 #fff, 3px 3px 0 #fff;
+    // text-shadow: -3px -3px 0 #fff, 3px -3px 0 #fff, -3px 3px 0 #fff, 3px 3px 0 #fff;
 }
 
 .sidebar {
@@ -169,12 +169,12 @@ $bluetext: #3F72AF;
     // @include transform(rotate(.5deg));
     background-color: rgba(white, 0.6);
     padding: 30px 30px 20px;
-    margin: 15px;
+    // margin: 15px;
     border: 1px solid $bluehighlight;
     // @include box-shadow(2px 2px 15px 0 rgba($darkblueshadow,0.4));
     @include BS-large {
-        margin: 0 50px;
-        max-width: 500px;
+        // margin: 0 50px;
+        // max-width: 500px;
     };
 
     p {
@@ -193,16 +193,16 @@ h4 {
 
 .photobox {
     .imageHolder {
-        @include transform(rotate(1deg));
+        // @include transform(rotate(1deg));
         background: white;
-        @include box-shadow(3px 4px 15px 0 rgba($darkblueshadow,0.5));
+        @include box-shadow(3px 4px 15px 0 rgba($darkblueshadow,0.3));
         border: 5px solid #fff;
     }
 
     .tilt {
-        @include transform(rotate(-1.5deg));
+        @include transform(rotate(-1deg));
         border: 5px solid white;
-        @include box-shadow(3px 4px 15px 0 rgba($darkblueshadow,0.5));
+        @include box-shadow(3px 4px 15px 0 rgba($darkblueshadow,0.3));
     }
 
     .doubletilt {
@@ -215,19 +215,22 @@ h4 {
 
         &:nth-child(2) {
             @include transform(rotate(1.5deg));
-            @include box-shadow(5px -5px 15px 0 rgba($darkblueshadow,0.5));
+            @include box-shadow(5px -5px 15px 0 rgba($darkblueshadow,0.3));
             margin-left: auto;
+            margin-top: -60px;
         }
-        @include box-shadow(3px 4px 15px 0 rgba($darkblueshadow,0.5));
+        @include box-shadow(3px 4px 15px 0 rgba($darkblueshadow,0.3));
+
+    }
+
+    .doubletilt.vertical {
+        max-width: 300px;
     }
 
     .moveup {
         margin-top: -160px;
     }
 
-    .vertical {
-        max-width: 300px;
-    }
 
     .containerPhotoCaption {
         padding: 0;
@@ -244,9 +247,15 @@ h4 {
     };
 }
 
+.medium {
+    @include BS-medium {
+        max-width: 400px;
+    };
+}
+
 .vertical {
     @include BS-medium {
-        max-width: 250px;
+        max-width: 350px;
     };
 }
 
@@ -286,8 +295,29 @@ h4 {
     };
 }
 
+.stickymap {
+    opacity: 0;
+    padding-left: 60px;
+    @include transition(opacity .3s ease);
+    z-index: 10;
+    @include tablet {
+        display: none;
+    };
+
+    .videoholder {
+        width: 100%;
+        background: #ccc;
+        height: 100vh;
+    }
+}
+
+.windowfade {
+    opacity: 1;
+    @include transition(opacity .3s ease);
+}
+
 #firstimg {
-    transform: rotate3d(0, -1, 0, 180deg);
+    // transform: rotate3d(0, -1, 0, 180deg);
 }
 
 .sectionBreak {
@@ -300,45 +330,50 @@ h4 {
 
     img {
         position: relative;
-        width: 550px;
+        width: 500px;
         height: auto;
-        margin-top: -20px;
+        margin-top: -90px;
         margin-right: auto;
+        z-index: 1;
+        opacity: 0.5;
     };
-    // &::before {
-    //     content: '';
-    //     position: absolute;
-    //     height: 100px;
-    //     width: 100%;
-    //     top: -100px;
-    //     left: 0;
-    //     right: 0;
-    //     z-index: 0;
-    //     // background: -moz-radial-gradient(left, ellipse cover, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 70%);
-    //     // background: -webkit-radial-gradient(left, ellipse cover, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 70%);
-    //     // background: linear-gradient(to top )
-    //     background: radial-gradient(farthest-corner at 18% 100%, rgba(#ffffff,1) 0%, rgba(#ffffff,0) 70%);
-    //
-    // }
+
+    &::before {
+        content: '';
+        position: absolute;
+        height: 100px;
+        width: 100%;
+        top: -100px;
+        left: 0;
+        right: 0;
+        z-index: 0;
+        // background: -moz-radial-gradient(left, ellipse cover, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 70%);
+        // background: -webkit-radial-gradient(left, ellipse cover, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 70%);
+        // background: linear-gradient(to top )
+        background: radial-gradient(farthest-corner at 18% 100%, rgba(white,1) 0%, rgba(#ffffff,0) 70%);
+    }
+
     &::after {
         content: '';
         position: absolute;
         height: 60vh;
         width: 100%;
-        top: -60px;
+        // top: -60px;
+        top: 0;
         bottom: 0;
         left: 0;
         right: 0;
         z-index: 0;
         // background: -moz-radial-gradient(left, ellipse cover, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 70%);
         // background: -webkit-radial-gradient(left, ellipse cover, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 70%);
-        background: radial-gradient(farthest-corner at 30% 32%, rgba(#fff,0.8) 0%, rgba(#fff,0) 70%);
+        // background: radial-gradient(farthest-corner at 30% 32%, rgba(#fff,0.8) 0%, rgba(#fff,0) 70%);
+        background: radial-gradient(farthest-corner at 18% 0%, rgba(#fff,1) 0%, rgba(#fff,0) 70%);
     }
 }
 
 .highlight {
-    background-color: $bluehighlight;
-    @include box-shadow(1.5px 0 0 $bluehighlight, -1.5px 0 0 $bluehighlight);
+    background-color: white;
+    @include box-shadow(1.5px 0 0 white, -1.5px 0 0 white);
     padding: 1px 3px;
     border-radius: 4px;
     cursor: pointer;
@@ -383,8 +418,8 @@ p {
 
     .innertext {
         position: relative;
-        padding: 20px 30px 10px 30px;
-        background-color: rgba(#eee,0.97);
+        padding: 20px 15px 15px;
+        background-color: rgba(#fff,0.97);
         margin: 0;
         @include box-shadow(0px 0px 10px 0 rgba($darkblueshadow,0.4));
         font-family: $philly-sans;
@@ -405,14 +440,16 @@ p {
     }
 
     .namesection {
-        padding-bottom: 15px;
+        padding: 5px;
         @include display-flex;
-        @include flex(1 1 18%);
+        @include flex(1 1 250px);
         padding-right: 20px;
         align-items: center;
         max-width: 900px;
         margin: 0 auto;
         flex-wrap: wrap;
+        background: white;
+        margin: 2px;
 
         .bioImage {
             @include flex(1 1 100%);
@@ -433,22 +470,30 @@ p {
     .scrollsection {
         @include display-flex;
         flex-wrap: wrap;
-        max-height: 50vh;
+        // max-height: 50vh;
         overflow: auto;
         @include transition(all 0.5s linear);
+        align-items: stretch;
+        justify-content: space-around;
 
         .bioImage {
-            @include flex(1 1 80px);
-            padding-right: 20px;
-            display: none;
-
+            @include flex(1 1 70px);
+            padding-right: 10px;
+            align-self: flex-start;
+            // display: none;
             .containerPhotoCredit {
                 display: none;
             }
         }
+
+        .flexwrap {
+            align-self: flex-start;
+        }
+
         .info {
             font-size: 14px;
         }
+
         .name {
             font-size: 16px;
         }
@@ -459,6 +504,15 @@ p {
         overflow: auto;
         opacity: 1;
         width: 100%;
+
+        .namesection {
+            background: none;
+            justify-content: center;
+
+            .flexwrap {
+                @include flex(0 1 auto);
+            }
+        }
     }
 
     .hidescreen {
@@ -526,4 +580,57 @@ p {
         max-width: 650px;
         padding-right: 60px;
     };
+}
+
+#glossary-hover {
+    position: fixed;
+    background: rgba(#fff,1);
+    padding: 10px;
+    border-radius: 4px;
+    max-width: 200px;
+    @include box-shadow(2px 2px 15px 0 rgba($darkblueshadow,0.4));
+    font-family: $philly-sans;
+    z-index: 5;
+
+    .bioImage {
+        display: none;
+    }
+
+    .name {
+        display: none;
+    }
+
+    .info {
+        font-size: 14px;
+    }
+}
+
+.sourcebox {
+    p {
+        font-size: 15px;
+        line-height: 1.2;
+    }
+}
+
+.sidebyside {
+    padding: 0 0 40px 0;
+    margin-top: -50px;
+    @include display-flex;
+    flex-wrap: wrap;
+
+    .side {
+        @include flex(1 1 50%);
+    }
+
+    .containerPhotoCredit {
+        @include flex(1 1 100%);
+    }
+
+    .containerPhotoCaption {
+        @include flex(1 1 100%);
+    }
+}
+
+.container {
+    z-index: 2;
 }
