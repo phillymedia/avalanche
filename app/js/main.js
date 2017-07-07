@@ -19,14 +19,14 @@ $(document).ready(function() {
 
             $(".displaysection").find('.namesection').html(getHTML);
 
-            $("body").toggleClass('fadeOut');
+            // $("body").toggleClass('fadeOut');
             $(".glossary").toggleClass('inView');
         })
 
     })
 
     $(".closebutton").on("click", function() {
-        $("body").toggleClass('fadeOut');
+        // $("body").toggleClass('fadeOut');
         $(".glossary").toggleClass('inView');
         $(".displaysection").removeClass("slideOut");
         $(".seeMore").removeClass("slideOut");
@@ -44,7 +44,7 @@ $(document).ready(function() {
 });
 
 
-$(window).on('load resize', function() {
+$(window).on('ready resize', function() {
     var rowwidth = $(".col").outerWidth();
     var outercolwidth = $(".container").outerWidth();
     var windowwidth = $(window).width();
