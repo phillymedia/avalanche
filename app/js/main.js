@@ -1,4 +1,8 @@
+require("./video");
+
 $(document).ready(function() {
+    var tap = ("ontouchstart" in document.documentElement);
+
     var $header = $('#header');
     var hhight = $header.height();
 
@@ -11,46 +15,68 @@ $(document).ready(function() {
     });
 
 
+
+
+
     $(".highlight").each(function() {
+        if (!tap) {
+            $(this).on("mouseenter", function(event) {
+                event.preventDefault();
 
-        $(this).on("mouseover", function() {
+                var x = event.clientX + 0; // Get the horizontal coordinate
+                var y = event.clientY + 20;
+
+                var getData = $(this).attr("name-data");
+                var getHTML = ($("#" + getData + "-text").html());
+                $("body").append("<div id='glossary-hover'></div>");
+                $("#glossary-hover").html(getHTML + "<small><em>Click for more info<em></small>");
+                $('#glossary-hover').css({
+                    top: y,
+                    left: x
+                }).show();
+
+            });
+            $(this).on("mouseleave", function() {
+                $('#glossary-hover').hide();
+            });
+        }
 
 
-            var x = event.clientX + 0; // Get the horizontal coordinate
-            var y = event.clientY + 20;
 
-            var getData = $(this).attr("name-data");
-            var getHTML = ($("#" + getData + "-text").html());
-            $("body").append("<div id='glossary-hover'></div>");
-            $("#glossary-hover").html(getHTML + "<small><em>Click for more info<em></small>");
-            $('#glossary-hover').css({
-                top: y,
-                left: x
-            }).show();
-
-        });
-        $(this).mouseout(function() {
-            $('#glossary-hover').hide();
-        });
 
         $(this).on('click', function() {
+            $('#glossary-hover').hide();
+
+            var $this = $(this);
             var getData = $(this).attr("name-data");
             var getHTML = ($("#" + getData + "-text").html());
-
             $(".displaysection").find('.namesection').html(getHTML);
 
-            // $("body").toggleClass('fadeOut');
-            $(".glossary").toggleClass('inView');
+            if ($this.attr("class") == "highlight clicked") {
+                $(".glossary").removeClass('inView');
+                $(this).removeClass("clicked");
+            } else {
+                $(".highlight").removeClass('clicked');
+                $this.addClass("clicked");
+                $(".glossary").addClass('inView');
+            }
         })
 
     })
 
     $(".closebutton").on("click", function() {
-        // $("body").toggleClass('fadeOut');
         $(".glossary").toggleClass('inView');
         $(".displaysection").removeClass("slideOut");
         $(".seeMore").removeClass("slideOut");
         $(".scrollsection").removeClass("slideIn").addClass("hidescreen");
+        $(".innertext").removeClass("fullscreen");
+        $(".innertext").css('height', "");
+        if ($("body").attr("class") == "fadeOut") {
+            $("body").toggleClass('fadeOut');
+
+        }
+
+
     })
 
     $(".seeMore").on("click", function() {
@@ -58,9 +84,31 @@ $(document).ready(function() {
         $(".seeMore").addClass("slideOut");
 
         $(".scrollsection")
-            // .addClass("slideIn")
             .removeClass("hidescreen");
+        var wheight = $(window).height();
+        var eheight = $(".innertext").height();
+        var header_height = $("header").height();
+
+        if (eheight >= wheight * .7 || $(window).width() < 600) {
+            $(".innertext").addClass("fullscreen");
+            $(".fullscreen").find(".scrollsection").css('height', wheight - header_height + "px");
+            $(".fullscreen").find(".closebutton").css('top', header_height + 10 + "px");
+
+            $("body").toggleClass('fadeOut');
+
+        }
     })
+
+
+
+    // listen on the event
+
+    require("./modernizr");
+    if (Modernizr.cssgrid) {
+        console.log("supported");
+    } else {
+        console.log("not supported");
+    }
 });
 
 
@@ -90,56 +138,15 @@ $(window).on('ready resize', function() {
             .css('width', "")
             .css('margin-right', '');
     }
-})
+    var videosource = "'http://media.philly.com/storage/inquirer/video/AvalancheVideo2.mp4'";
 
-$(window).on('scroll resize', function() {
-
-    var header_height = $("header").height();
-
-    var window_height = $(window).height();
-    var window_top_position = $(window).scrollTop();
-    var window_bottom_position = (window_top_position + window_height);
-    var trigger = $("#trigger").offset().top;
-    var triggerout = $("#triggerout").offset().top;
-
-
-
-    if(trigger <= window_top_position + (window_height*.5)) {
-        $(".stickymap").addClass("windowfade");
+    if ($(window).width() < 600) {
+        $("video source").attr("src") == "";
+        console.log($("video source").attr("src"));
+    } else {
+        $("video source").attr("src") == videosource;
+        console.log($("video source").attr("src"));
     }
 
-    if (trigger <= window_top_position + header_height) {
-         $(".stickymap")
-         .css("position","fixed")
-         .css("right","0px")
-         .css("left",$(window).width()-$(".stickymap").width()-80)
-         .css("top",header_height + "px");
-
-    } else if (trigger > window_top_position + header_height) {
-        $(".stickymap")
-        .css("position","")
-        .css("right","")
-        .css('left', $(".col-md-6").outerWidth() + "px")
-        .css("top","");
-    }
-
-    if (triggerout < window_bottom_position) {
-        console.log("trigger");
-        $(".stickymap").removeClass("windowfade");
-    }
-
-
-    // $('.lazyload').each(function() {
-    //     var $element = $(this);
-    //     var element_height = $element.outerHeight();
-    //     var element_top_position = $element.offset().top;
-    //     var element_bottom_position = (element_top_position + element_height);
-    //     if ((element_bottom_position >= window_top_position) &&
-    //         (element_top_position <= window_bottom_position * .98)) {
-    //         $element.addClass('animated');
-    //     } else if (element_top_position > window_bottom_position || element_bottom_position < window_top_position) {
-    //         $element.removeClass('animated');
-    //     }
-    // });
 
 })

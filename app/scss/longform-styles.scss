@@ -1,4 +1,5 @@
 @import "philly-styles/values";
+$darkblueshadow: #2d3743;
 
 .headerIntro {
     position: relative;
@@ -7,11 +8,11 @@
 }
 
 #backgroundImage-1 {
-    background-image: url("../css/RS700121_SWBowl.jpg");
-    background-position: left 50% top 20%;
+    background-image: url("http://media.philly.com/images/RS_x_20170711_Mt_temple_clean.png");
+    background-position: left 50% top 5%;
     @include tablet {
         background-position: left 50% top 49px;
-        background-size: contain;
+        background-size: cover;
     }
 }
 
@@ -34,10 +35,32 @@
     background-size: cover;
     background-color: #000;
     @include tablet {
-        min-height: 500px;
-        min-height: 100%;
-        height: auto;
-        padding-bottom: percentage(800/1200)-5;
+        background-attachment: scroll;
+        min-height: 0;
+    }
+
+    &::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 1;
+        /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#1e5799+0,7db9e8+100&1+0,0+100;Blue+to+Transparent */
+        background: -moz-linear-gradient(bottom, rgba(#222,0.8) 0%, rgba(#222,0) 80%);
+        /* FF3.6-15 */
+        background: -webkit-linear-gradient(bottom, rgba(#222,0.8) 0%,rgba(#222,0) 80%);
+        /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(to top, rgba(#222,0.8) 0%,rgba(#222,0) 80%);
+        /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+
+        background-attachment: fixed;
+        @include tablet {
+            background-attachment: scroll;
+        };
     }
 }
 
@@ -47,31 +70,70 @@
     bottom: 20%;
     width: 100%;
     margin: auto;
-    text-align: center;
-    color: #fff;
-    font-family: $philly-sans;
-    font-weight: 600;
-    letter-spacing: -5px;
+padding-left: 40px;
+    padding-right: 20px;
+    text-align: left;
     line-height: normal;
-    text-shadow: 0 0 15px #000;
-    font-size: 80px;
-    @include tablet {
-        font-size: 68px;
-        padding: 0 10px;
-    }
+    text-shadow: 0 0 10px #000;
+    z-index: 2;
     @include mobile {
-        position: relative;
-        top: inherit;
-        bottom: inherit;
-        color: #000;
-        text-shadow: none !important;
-        padding: 30px 10px 10px;
-        margin-bottom: 0.625rem;
-        font-weight: 800;
-        letter-spacing: -.0625rem;
-        font-size: 2.5rem;
-        line-height: 1.05;
+        text-shadow: 0 0 5px #000;
+        padding-left: 20px;
+    };
+    @include BS-medium {
+        padding-left: 10%;
+    };
+
+    h1 {
+        color: #fff;
+        font-family: $philly-sans;
+        font-weight: 900;
+        letter-spacing: -3px;
+        font-size: 80px;
+        margin-bottom: 0;
+        @include mobile {
+            // position: relative;
+            // top: inherit;
+            // bottom: inherit;
+            // color: #000;
+            padding: 30px 10px 10px;
+            font-weight: 800;
+            letter-spacing: normal;
+            font-size: 50px;
+            line-height: 1.05;
+        }
+        @include BS-medium {
+            font-size: 90px;
+        };
     }
+
+    .suboverlay {
+        color: #fff;
+        font-family: $philly-sans;
+        font-weight: 600;
+        font-size: 35px;
+        @include mobile {
+            font-size: 30px;
+        };
+        @include BS-medium {
+            font-size: 45px;
+        };
+    }
+
+    .byline {
+        color: white;
+        font-family: $philly-sans;
+        font-size: 20px;
+        padding-top: 20px;
+        line-height: normal;
+        a {
+            color: #eee;
+        }
+        @include mobile {
+            font-size: 18px;
+        };
+    }
+
 }
 
 .backgroundImageCredit {
@@ -136,7 +198,6 @@
             letter-spacing: 1px;
             font-size: 65px;
             text-shadow: none;
-
             @include tablet {
                 padding: 0 10px 20px;
                 position: relative;
@@ -272,8 +333,6 @@
     margin: 0 3%;
 }
 
-
-
 #recircBox {
     overflow: hidden;
     font-family: $philly-sans;
@@ -281,12 +340,14 @@
     color: #ffffff;
     padding: 11px;
     border-top: 7px solid #B63321;
+
     h1.sf-header__heading.dib.va--middle {
         max-width: 1200px;
         margin: 20px auto 30px;
         display: block;
         font-weight: 100;
     }
+
     .block__headline,
     .block__headline a {
         color: #ffffff;
@@ -296,6 +357,7 @@
     .block__list-item-flex.with-dividers {
         border-right: 1px solid #545454;
     }
+
     .kicker {
         color: #E86A58;
         display: none;
@@ -306,12 +368,7 @@
     max-width: 1200px;
     margin: auto;
 }
-
-
-
-
 // -----------BOOTSTRAP FIX--------------------
-
 body,
 html {
     font-size: 16px !important;
@@ -328,14 +385,16 @@ p {
     font-size: 18px;
     line-height: 1.9em;
     color: #222;
-    // -webkit-font-smoothing: antialiased;
-    // -moz-font-smoothing: antialiased;
-    // font-smoothing: antialiased;
-    // text-rendering: optimizeLegibility;
-    // -webkit-text-size-adjust: none;
-    // -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    -moz-font-smoothing: antialiased;
+    font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    -webkit-text-size-adjust: none;
+    -moz-osx-font-smoothing: grayscale;
+    @include mobile {
+        line-height: 1.6em;
+    };
 }
-
 // .progress {
 //     position: fixed !important;
 //     left: 0;

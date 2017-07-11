@@ -1,38 +1,19 @@
 @import 'longform-styles';
 @import 'philly-styles/values';
 @import 'flexgrid';
+@import 'glossary';
 $lightblue: #e3eff5;
-$darkblueshadow: #112D4E;
+$darkblueshadow: #2d3743;
 $bluehighlight: #e9f7fe;
 $bluetext: #6f7e8f;
 
 .bg-color {
-    background-color: $lightblue;
+    // background-color: $lightblue;
     @include transition(all .5s ease);
+    background-color: #eee;
 }
 
-.fadeOut {
-    position: relative;
-    overflow: hidden;
 
-    .bg-color {
-        background-color: rgba($darkblueshadow,0.65);
-        @include transition(all .5s ease);
-    }
-
-    &:after {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        height: 100%;
-        width: 100%;
-        background-color: rgba($darkblueshadow,0.65);
-        z-index: 10;
-    }
-}
 
 .firstp {
     font-size: 1.75em;
@@ -41,6 +22,10 @@ $bluetext: #6f7e8f;
     display: block;
     position: relative;
     z-index: 1;
+    @include mobile {
+        font-size: 1.5em;
+        margin: 60px 0 10px;
+    };
 }
 
 .secondp {
@@ -55,28 +40,7 @@ $bluetext: #6f7e8f;
         // font-size: 105%;
     }
 }
-// .dropBox {
-//     float: left;
-//     background: white;
-//     width: 50px;
-//     height: 50px;
-//     position: relative;
-// }
-//
-// .dropCapFirst {
-//     float: left;
-//     color: #222;
-//     font-size: 2.5em;
-//     padding-top: 0;
-//     padding-right: 20px;
-//     font-weight: 900;
-//     padding-left: 3px;
-//     font-family: $philly-serif;
-//     background-color: white;
-//     position: relative;
-//     height: 100px;
-//     width: 100px;
-// }
+
 
 .dropBox {
     position: relative;
@@ -89,8 +53,15 @@ $bluetext: #6f7e8f;
     text-align: center;
     float: left;
     padding: 0 10px 0 0;
-    margin-top: 67px;
     margin-right: 10px;
+    margin-top: 10px;
+
+    @include tablet {
+        margin-top: 0;
+    };
+    @include BS-medium {
+        margin-top: 67px;
+    };
 }
 
 .dropCapFirst {
@@ -104,7 +75,7 @@ $bluetext: #6f7e8f;
     font-family: $philly-serif;
     font-weight: 900;
     color: #fff;
-    color: $bluetext;
+    background: $bluetext;
     // position: relative;
     // height: 100px;
     // width: 100px;
@@ -119,10 +90,19 @@ $bluetext: #6f7e8f;
     height: 80px;
     text-align: center;
     float: left;
-    margin-top: 58px;
     margin-right: 10px;
     margin-left: -40px;
     // border: 1px solid white;
+    // background: rgba(white, 0.8);
+    @include mobile {
+        margin-left: 0;
+    };
+    @include tablet {
+        margin-left: -10px;
+    };
+    @include BS-medium {
+        margin-top: 58px;
+    };
 }
 
 .dropCapSecond {
@@ -195,8 +175,13 @@ h4 {
     .imageHolder {
         // @include transform(rotate(1deg));
         background: white;
-        @include box-shadow(3px 4px 15px 0 rgba($darkblueshadow,0.3));
         border: 5px solid #fff;
+        @include mobile {
+            border: 3px solid white;
+        };
+        @include BS-medium {
+            @include box-shadow(3px 4px 15px 0 rgba($darkblueshadow,0.3));
+        };
     }
 
     .tilt {
@@ -206,25 +191,40 @@ h4 {
     }
 
     .doubletilt {
-        width: 85%;
         border: 5px solid white;
 
+        @include BS-medium {
+            width: 85%;
+            @include box-shadow(3px 4px 15px 0 rgba($darkblueshadow,0.3));
+
+        };
+
         &:first-child {
-            @include transform(rotate(-1.5deg));
+            // @include transform(rotate(deg));
         }
 
         &:nth-child(2) {
-            @include transform(rotate(1.5deg));
-            @include box-shadow(5px -5px 15px 0 rgba($darkblueshadow,0.3));
-            margin-left: auto;
-            margin-top: -60px;
+            margin-top: 10px;
+            margin-right: auto;
+            max-width: none;
+            @include BS-medium {
+                margin-top: -45px;
+                @include transform(rotate(1deg));
+                margin-left: auto;
+                margin-right: 0;
+                @include box-shadow(5px -5px 15px 0 rgba($darkblueshadow,0.3));
+
+            };
         }
-        @include box-shadow(3px 4px 15px 0 rgba($darkblueshadow,0.3));
+
+
 
     }
 
     .doubletilt.vertical {
-        max-width: 300px;
+        @include BS-medium {
+            max-width: 350px;
+        };
     }
 
     .moveup {
@@ -295,26 +295,7 @@ h4 {
     };
 }
 
-.stickymap {
-    opacity: 0;
-    padding-left: 60px;
-    @include transition(opacity .3s ease);
-    z-index: 10;
-    @include tablet {
-        display: none;
-    };
 
-    .videoholder {
-        width: 100%;
-        background: #ccc;
-        height: 100vh;
-    }
-}
-
-.windowfade {
-    opacity: 1;
-    @include transition(opacity .3s ease);
-}
 
 #firstimg {
     // transform: rotate3d(0, -1, 0, 180deg);
@@ -327,6 +308,7 @@ h4 {
     // background-color: rgba(white,0.3);
     position: relative;
     text-align: left;
+    margin-top: 100px;
 
     img {
         position: relative;
@@ -335,7 +317,8 @@ h4 {
         margin-top: -90px;
         margin-right: auto;
         z-index: 1;
-        opacity: 0.5;
+        opacity: 0.45;
+        mix-blend-mode: multiply;
     };
 
     &::before {
@@ -350,7 +333,10 @@ h4 {
         // background: -moz-radial-gradient(left, ellipse cover, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 70%);
         // background: -webkit-radial-gradient(left, ellipse cover, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 70%);
         // background: linear-gradient(to top )
-        background: radial-gradient(farthest-corner at 18% 100%, rgba(white,1) 0%, rgba(#ffffff,0) 70%);
+        // background-color: $lightblue;
+        // background: radial-gradient(farthest-corner at 18% 100%, rgba(white,1) 0%, rgba(#ffffff,0) 70%);
+        background: radial-gradient(farthest-corner at 18% 100%, rgba(white,1) 0%, rgba(white,0) 70%);
+
     }
 
     &::after {
@@ -367,7 +353,9 @@ h4 {
         // background: -moz-radial-gradient(left, ellipse cover, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 70%);
         // background: -webkit-radial-gradient(left, ellipse cover, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 70%);
         // background: radial-gradient(farthest-corner at 30% 32%, rgba(#fff,0.8) 0%, rgba(#fff,0) 70%);
-        background: radial-gradient(farthest-corner at 18% 0%, rgba(#fff,1) 0%, rgba(#fff,0) 70%);
+        // background: radial-gradient(farthest-corner at 18% 0%, rgba(#fff,1) 0%, rgba(#fff,0) 70%);
+        background: radial-gradient(farthest-corner at 18% 0%, rgba(white,1) 0%, rgba(white,0) 70%);
+
     }
 }
 
@@ -379,6 +367,7 @@ h4 {
     cursor: pointer;
     font-weight: bold;
     @extend %smoothing;
+    border-bottom: 1px solid $bluetext;
 
     &:hover {
         background-color: $bluehighlight;
@@ -400,147 +389,7 @@ p {
     z-index: 10;
 }
 
-.glossary {
-    position: fixed;
-    // top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    width: 100vw;
-    height: auto;
-    z-index: 900;
-    @include display-flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
-    display: none;
 
-    .innertext {
-        position: relative;
-        padding: 20px 15px 15px;
-        background-color: rgba(#fff,0.97);
-        margin: 0;
-        @include box-shadow(0px 0px 10px 0 rgba($darkblueshadow,0.4));
-        font-family: $philly-sans;
-        overflow: hidden;
-        @include transition(all 0.5s linear);
-        height: auto;
-        width: 100%;
-    }
-
-    .seeMore {
-        position: absolute;
-        right: 25px;
-        bottom: 6px;
-        color: $darkblueshadow;
-        font-size: 15px;
-        text-transform: uppercase;
-        cursor: pointer;
-    }
-
-    .namesection {
-        padding: 5px;
-        @include display-flex;
-        @include flex(1 1 250px);
-        padding-right: 20px;
-        align-items: center;
-        max-width: 900px;
-        margin: 0 auto;
-        flex-wrap: wrap;
-        background: white;
-        margin: 2px;
-
-        .bioImage {
-            @include flex(1 1 100%);
-            padding-right: 20px;
-            max-width: 120px;
-        }
-
-        .flexwrap {
-            @include flex(1 1 65%);
-        }
-    }
-
-    .name {
-        font-weight: 900;
-        font-size: 18px;
-    }
-
-    .scrollsection {
-        @include display-flex;
-        flex-wrap: wrap;
-        // max-height: 50vh;
-        overflow: auto;
-        @include transition(all 0.5s linear);
-        align-items: stretch;
-        justify-content: space-around;
-
-        .bioImage {
-            @include flex(1 1 70px);
-            padding-right: 10px;
-            align-self: flex-start;
-            // display: none;
-            .containerPhotoCredit {
-                display: none;
-            }
-        }
-
-        .flexwrap {
-            align-self: flex-start;
-        }
-
-        .info {
-            font-size: 14px;
-        }
-
-        .name {
-            font-size: 16px;
-        }
-    }
-
-    .displaysection {
-        max-height: 30vh;
-        overflow: auto;
-        opacity: 1;
-        width: 100%;
-
-        .namesection {
-            background: none;
-            justify-content: center;
-
-            .flexwrap {
-                @include flex(0 1 auto);
-            }
-        }
-    }
-
-    .hidescreen {
-        @include transition(all 0.5s linear);
-        max-height: 0;
-        overflow: hidden;
-        opacity: 0;
-    }
-
-    .slideOut {
-        max-height: 0;
-        overflow: hidden;
-        opacity: 0;
-    }
-
-    .closebutton {
-        position: absolute;
-        top: 2px;
-        right: 25px;
-        font-weight: bold;
-        cursor: pointer;
-        font-size: 20px;
-    }
-}
-
-.inView {
-    @include display-flex;
-}
 
 .fixedside {
     position: relative;
@@ -553,8 +402,9 @@ p {
         max-width: 55%;
     };
     @include mobile {
-        margin-left: 5px;
-        max-width: 50%;
+        margin: 0px;
+        padding: 0px;
+        max-width: 100%;
     };
     @include BS-medium {
         position: absolute;
@@ -565,12 +415,55 @@ p {
         max-width: none;
     };
 }
+.stickymap {
+    opacity: 0;
+    padding-left: 60px;
+    @include transition(opacity .3s ease);
+    z-index: 10;
+    flex-wrap: wrap;
+    display: none;
+
+    @include BS-medium {
+        display: block;
+    };
+
+    .containerPhotoCredit {
+        width: 100%;
+    }
+    .containerPhotoCaption {
+        width: 100%;
+        color: #444;
+        font-size: 15px;
+
+    }
+
+    .videoholder {
+        width: 100%;
+        background: #ccc;
+        height: 100vh;
+    }
+}
+
+#googlevideo {
+    align-self: flex-start;
+    border: 5px solid white;
+
+}
+
+.windowfade {
+    opacity: 1;
+    @include transition(opacity .3s ease);
+}
 
 .inner-container {
     justify-content: center;
     width: auto;
     height: auto;
     margin: 0 0 0 15px;
+    @include mobile {
+        margin:0;
+        padding: 15px 0;
+    };
     @include BS-medium {
         padding: 0 20px;
         margin: 0 auto;
@@ -582,33 +475,22 @@ p {
     };
 }
 
-#glossary-hover {
-    position: fixed;
-    background: rgba(#fff,1);
-    padding: 10px;
-    border-radius: 4px;
-    max-width: 200px;
-    @include box-shadow(2px 2px 15px 0 rgba($darkblueshadow,0.4));
-    font-family: $philly-sans;
-    z-index: 5;
 
-    .bioImage {
-        display: none;
-    }
-
-    .name {
-        display: none;
-    }
-
-    .info {
-        font-size: 14px;
-    }
-}
 
 .sourcebox {
+    h4 {
+        color: black;
+        padding-bottom: 10px;
+        font-size: 18px;
+        font-family: $philly-sans;
+    }
     p {
-        font-size: 15px;
-        line-height: 1.2;
+        font-size: 16px;
+        line-height: 1.3;
+        color: #333;
+        @include mobile {
+            font-size: 14px;
+        };
     }
 }
 
@@ -633,4 +515,47 @@ p {
 
 .container {
     z-index: 2;
+}
+
+.mobilesmall {
+    @include mobile {
+        max-width: 50%;
+    };
+}
+
+.mobilehide {
+    @include mobile {
+        display: none;
+    };
+}
+
+
+.adUnitWrapper {
+    margin: 0 auto 30px auto;
+}
+
+.imagebreak {
+    img {
+        border: 5px solid white;
+        @include mobile {
+            border: 3px solid white;
+        };
+    }
+}
+
+.inviisble {
+    opacity: 0;
+}
+
+.imagebreak {
+    font-family: $philly-sans;
+    .graphictitle {
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+    .graphicintro {
+        font-size: .9rem;
+        padding-bottom: 10px;
+    }
+
 }
