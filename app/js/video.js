@@ -1,23 +1,23 @@
 $(document).ready(function() {
     var video = document.getElementById('googlevideo');
 
-
-
     function myTimer() {
-        if ((video.currentTime).toFixed(2) == 5.10 && t2Called == false) {
+
+
+        if ((video.currentTime).toFixed(2) == 5.13 && t2Called == false) {
             video.pause();
         }
-        if ((video.currentTime).toFixed(2) == 14.22 && t3Called == false) {
+        if ((video.currentTime).toFixed(2) == 14.55 && t3Called == false) {
             if (video.play()) {
                 video.pause();
             }
         }
-        if ((video.currentTime).toFixed(2) == 21.13 && t4Called == false) {
+        if ((video.currentTime).toFixed(2) == 21.31 && t4Called == false) {
             if (video.play()) {
                 video.pause();
             }
         }
-        if ((video.currentTime).toFixed(2) == 34.17 && t5Called == false) {
+        if ((video.currentTime).toFixed(2) == 34.21 && t5Called == false) {
             if (video.play()) {
                 video.pause();
             }
@@ -46,6 +46,8 @@ $(document).ready(function() {
         }
 
         if (trigger <= window_top_position + (window_height * .5) && trigger >= window_top_position + (window_height * .3)) {
+            $(".stickymap").addClass("windowfade");
+
             t1();
         }
         if ($("#trigger2").offset().top <= window_top_position + (window_height * .5) && $("#trigger2").offset().top >= window_top_position + (window_height * .3)) {

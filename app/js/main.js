@@ -91,8 +91,9 @@ $(document).ready(function() {
 
         if (eheight >= wheight * .7 || $(window).width() < 600) {
             $(".innertext").addClass("fullscreen");
-            $(".fullscreen").find(".scrollsection").css('height', wheight - header_height + "px");
-            $(".fullscreen").find(".closebutton").css('top', header_height + 10 + "px");
+            console.log(wheight, header_height);
+            $(".fullscreen").css('height', wheight - header_height + "px");
+            // $(".fullscreen").find(".closebutton").css('top', header_height + 10 + "px");
 
             $("body").toggleClass('fadeOut');
 

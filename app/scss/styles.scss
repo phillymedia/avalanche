@@ -15,6 +15,7 @@ $bluetext: #6f7e8f;
 
 
 
+
 .firstp {
     font-size: 1.75em;
     line-height: 1.25em;
@@ -414,6 +415,11 @@ p {
         display: flex;
         max-width: none;
     };
+}
+.onlytablet {
+    @include BS-medium {
+        display: none;
+    };    
 }
 .stickymap {
     opacity: 0;

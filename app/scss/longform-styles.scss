@@ -96,10 +96,10 @@ padding-left: 40px;
             // top: inherit;
             // bottom: inherit;
             // color: #000;
-            padding: 30px 10px 10px;
+            padding: 30px 0 0;
             font-weight: 800;
             letter-spacing: normal;
-            font-size: 50px;
+            font-size: 40px;
             line-height: 1.05;
         }
         @include BS-medium {
@@ -113,7 +113,7 @@ padding-left: 40px;
         font-weight: 600;
         font-size: 35px;
         @include mobile {
-            font-size: 30px;
+            font-size: 22px;
         };
         @include BS-medium {
             font-size: 45px;
@@ -130,7 +130,7 @@ padding-left: 40px;
             color: #eee;
         }
         @include mobile {
-            font-size: 18px;
+            font-size: 16px;
         };
     }
 
@@ -429,14 +429,16 @@ p {
 
 .bodyContainer a {
     cursor: pointer;
-    color: #0061A2;
-    box-shadow: inset -2px -5px 0 -2px #d5eeff;
+    color: #526070;
+    box-shadow: inset -2px -5px 0 -2px rgba(#6f7e8f,0.2);
     @include transition(box-shadow 0.3s cubic-bezier(0.86, 0, 0.07, 1));
 }
 
 .bodyContainer a:hover {
-    box-shadow: inset -2px -20px 0 -3px #d5eeff;
+    box-shadow: inset -2px -22px 0 -3px rgba(#6f7e8f,0.2);
     text-decoration: none;
+    color: #526070;
+
 }
 
 .linkBox {
@@ -475,4 +477,13 @@ p {
 
 .containerCarouselCaption {
     bottom: -70px !important;
+}
+
+.custom-social-share {
+    float: right;
+
+    @include mobile {
+        float: left;
+        margin-top: 20px;
+    };
 }
